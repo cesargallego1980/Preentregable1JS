@@ -1,0 +1,16 @@
+// Definir el tamaño del array
+let size = 5; // Puedes cambiar el tamaño según sea necesario
+
+// Crear un array vacío
+let arr = new Array(size);
+
+// Insertar elementos en el array usando un ciclo
+for (let i = 0; i < size; i++) {
+  arr[i] = prompt("Introduce un valor para la posición " + i); // Pedir un valor para cada posición
+}
+
+// Mostrar el contenido del array usando otro ciclo
+for (let i = 0; i < size; i++) {
+  console.log("Elemento en la posición " + i + ": " + arr[i]);
+}
+
