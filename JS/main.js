@@ -46,7 +46,8 @@ function rectangulo (largo, ancho) {
 
     // // Insertar elementos en el array usando un ciclo
 for (let i = 0; i < size; i++) {
-  datos[i] = prompt("Introduce un valor para la posición " + i); // Pedir un valor para cada posición
+  datos[i] = validarValor('Introduce un valor para la posicion ' + i,'El valor ingresado no es correcto');
+  //datos[i] = prompt("Introduce un valor para la posición " + i); // Pedir un valor para cada posición
   acum = parseInt(acum) + parseInt(datos[i])
   if(datos[i] > numMayor)
   {
