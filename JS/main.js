@@ -93,60 +93,75 @@ for (let i = 0; i < size; i++) {
   }
 let menu = parseInt(prompt("Elija una opcion: \n 1-Cuadrado \n 2-Rectangulo \n 3-Triangulo \n 4-Circulo \n 5-Trapecio \n 6-Rombo \n 7-Promedio \n 8-Cubo \n 9-Paralelepipedo \n 10-Piramide \n 11-Cilindro \n 12-Salir"))
 
+  function validarValor(mensageIni, mensajeerror){
+    let isValid = false;
+    let valor;
+    let mensageInicial = mensageIni;
+    while(!isValid){
+      valor =  parseInt(prompt(mensageInicial));
+      if(isNaN(valor)){
+        mensageInicial = mensajeerror;
+      }else{
+        isValid = true;
+      }
+    }
+    return  valor;
+  }
+
 while(menu !== 12) {
     switch(menu) {
         case 1:
-            let lado = parseInt(prompt("Ingrese el lado del cuadrado"))
+            let lado = validarValor('Ingrese el lado del cuadrado','El valor del lado para el cuadro es erroneo intenta con otro valor');
             cuadrado(lado)
             break
         case 2:
-            let largo = parseInt(prompt("Ingrese el lado del rectangulo"))
-            let ancho = parseInt(prompt("Ingrese el ancho del rectangulo"))
+            let largo = validarValor('Ingrese el lado del rectangulo','El valor del lado para el rectangulo es erroneo intenta con otro valor');
+            let ancho = validarValor('Ingrese el ancho del rectangulo','El valor del ancho para el rectangulo es erronio intenta con otro valor');
             rectangulo(largo, ancho)
             break
         case 3: 
-            
-            let base = parseInt(prompt("Ingrese la base del triangulo"))
-            let altura = parseInt(prompt("Ingrese la altura del triangulo"))
+            let base = validarValor('Ingrese la base del triangulo','El valor de la base del triangulo es erroneo intenta con otro valor');
+            let altura = validarValor('Ingrese la altura del triangulo','El valor de la altura del triangulo es erronea intenta con otro valor');
             triangulo(base, altura)
             break
         case 4:
-            let radio = parseInt(prompt("Ingrese el radio del circulo"))
+          let radio = validarValor('Ingrese el radio del circulo','El valor del radio del circulo es erroneo intenta con otro valor');
+            
             circulo(radio)
             break
         case 5:
-            let base1 = parseInt(prompt("Ingrese la primera base del trapecio"))
-            let base2 = parseInt(prompt("Ingrese la segunda base del trapecio"))
-            let alturaT = parseInt(prompt("Ingrese la altura del trapecio"))
-            trapecio(base1, base2, alturaT)
-            break
+          let base1 = validarValor('Ingrese la primera base del trapecio','El valor de la primera base es erroneo intenta con otro valor');
+          let base2 = validarValor('Ingrese la segunda base del trapecio','El valor de la segunda base es erroneo intenta con otro valor');
+          let alturaT = validarValor('Ingrese la altura del trapecio','El valor de la altura es erroneo intenta con otro valor');
+          trapecio(base1, base2, alturaT)
+          break
         case 6:
-          let D1 = parseInt(prompt("Ingrese la diagonal mayor"))
-          let D2 = parseInt(prompt("Ingrese la diagonal menor"))
-            rombo(D1, D2)
-            break
+          let D1 = validarValor('Ingrese la diagonal mayor','El valor de la diagonal mayor es erroneo intenta con otro valor');
+          let D2 = validarValor('Ingrese la diagonal menor','El valor de la diagonal menor es erroneo intenta con otro valor');
+          rombo(D1, D2)
+          break
         case 7:
-            let size = parseInt(prompt("Ingrese el tamaño del arreglo"))
+            let size = validarValor('Ingrese el tamaño del arreglo','El valor del tamaño es erroneo intenta con otro valor');
             promedio(size)
             break
         case 8:
-            let ladoCubo = parseInt(prompt("Ingrese el lado del cubo"))
+            let ladoCubo = validarValor('Ingrese el lado del cubo','El valor del lado del cubo es erroneo intenta con otro valor');
             cubo(ladoCubo)
             break
         case 9:
-            let long = parseInt(prompt("Ingrese la longitud"))
-            let anchoP = parseInt(prompt("Ingrese el ancho"))
-            let alturaP = parseInt(prompt("Ingrese la altura"))
+            let long = validarValor('Ingrese la longitud del cubo','El valor de la longitud del cubo es erroneo intenta con otro valor');
+            let anchoP = validarValor('Ingrese el ancho del cubo','El valor del ancho del cubo es erroneo intenta con otro valor');
+            let alturaP = validarValor('Ingrese la altura del cubo','El valor de la altura del cubo es erroneo intenta con otro valor');
             paralelepipedo (long, anchoP, alturaP)
             break
         case 10:
-          let basePiramide = parseInt(prompt("Ingrese el area base de la piramide"))
-          let alturaPiramide = parseInt(prompt("Ingrese la altura de la piramide"))
+          let basePiramide = validarValor('Ingrese el area base de la piramide','El valor del area base es erroneo intenta con otro valor');
+          let alturaPiramide = validarValor('Ingrese la altura de la piramide','El valor de la altura de la piramide es erroneo intenta con otro valor');
           piramide(basePiramide, alturaPiramide)
           break
         case 11:
-          let radioCil = parseInt(prompt("Ingrese el radio del cilindro"))
-          let alturaCil = parseInt(prompt("Ingrese la altura del cilindro"))
+          let radioCil = validarValor('Ingrese el radio del cilindro','El valor del radio es erroneo intenta con otro valor');
+          let alturaCil = validarValor('Ingrese la altura del cilindro','El valor de la altura es erroneo intenta con otro valor');
           cilindro(radioCil, alturaCil)
           break
         default:
