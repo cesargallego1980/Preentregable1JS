@@ -1,5 +1,41 @@
 
-   
+class Cuadrado {
+
+  static id = 0
+  constructor (lado, area= null) {
+      this.id = ++Cuadrado.id
+      this.lado = lado
+      if(area)
+        this.area = area
+  }
+
+  // area = () => {
+  //     this.area = this.lado * this.lado
+  //     alert("Area del Cuadrado: $ "+this.area)
+  // }
+    cargarCuadrados = (lado) => {
+      let resultado = lado*lado;
+      return resultado
+  }
+
+
+
+}
+
+const _cuadrado =  new Cuadrado(10);
+const cuadradosSave = [];
+
+
+const verAreasCuadrado = (vector) => {
+  if(vector.length === 0) {
+      alert("No hay productos añadidos")
+  } else {
+      for (const elemento of vector) {
+          alert("Lado: "+elemento.lado+ " Area: "+elemento.area)
+      }
+  }
+  
+}
 function cuadrado (lado) {
   
   let resultado = lado * lado
@@ -111,6 +147,15 @@ let menu = parseInt(prompt("Elija una opcion: \n 1-Cuadrado \n 2-Rectangulo \n 3
 
 while(menu !== 12) {
     switch(menu) {
+        case 19:
+          let lado1 = validarValor('Ingrese el lado del cuadrado','El valor del lado para el cuadrado es erroneo intenta con otro valor');
+          area =  _cuadrado.cargarCuadrados(lado1);
+          cuadradosSave.push(new Cuadrado(lado1, area));
+          console.log(cuadradosSave.length)
+          cuadradosSave.forEach(f=>{
+            console.log("item->", f.lado, f.area)
+          })
+          alert("El area es:" + area)
         case 1:
             let lado = validarValor('Ingrese el lado del cuadrado','El valor del lado para el cuadro es erroneo intenta con otro valor');
             cuadrado(lado)

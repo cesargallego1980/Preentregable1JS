@@ -1,0 +1,8 @@
+-DOM y Eventos
+-arrays de objetos
+-Funciones de orden superior(dos diferentes)
+-uso de storage
+-Repo de GitHub SI O SI
+-Un minimo de estilado
+-NADA de console, prompt o alert
+-NADA de JS en HTML

@@ -1,16 +1,144 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script defer src="./JS/main.js"></script>
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario de Cálculo de Área</title>
+  <script defer src="./JS/main2.js"></script>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <h2>Realizado por Cesar Augusto Gallego Soto</h2>
-    <h2>Calculo de Datos Geometricos (Areas)</h2>
-    <p>
-        Esta pagina se encarga de calcular las areas de las principales figuras geometricas bidimensionales y tridimensionales, asi como tambien el promedio de una  muestra de datos aleatoria unidos en un array.
-    </p>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Menú</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Áreas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./pages/volumen.html">Volúmenes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Física Mecánica</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="container mt-5">
+    <h2 class="text-center">Calcular Area de un Cuadrado</h2>
+    <form id="areaForm" class="mt-4">
+      <div class="form-group">
+        <label for="lado">Lado del Cuadrado</label>
+        <input type="number" class="form-control" id="lado" placeholder="Ingrese la longitud del lado" required>
+        <label for="lado">Buscar Area</label>
+        <input type="number" class="form-control" id="buscarAreaCuad" placeholder="Ingrese el area a buscar" required>
+      </div>
+      <button type="button" class="btn btn-primary" onclick="calcularAreaCuadrado()">Calcular Área</button>
+      <button type="button" class="btn btn-primary" onclick="BuscarAreaCuadrado()">Buscar Área</button>
+    </form>
+    <div id="resultado" class="mt-3"></div>
+    <div id="promCuadrado" class="mt-3"></div>
+    <div id="AreaCuadMaxima" class="mt-3"></div>
+    <div id="tablaAreas">
+
+    </div>
+    <h2 class="text-center">Calcular Área de un Rectangulo</h2>
+    <form id="areaForm" class="mt-4">
+      <div class="form-group">
+        <label for="lado">Largo del Rectangulo</label>
+        <input type="number" class="form-control" id="ladoRectangulo" placeholder="Ingrese el largo del Rectangulo" required>
+        <label for="lado">Ancho del Rectangulo</label>
+        <input type="number" class="form-control" id="anchoRectangulo" placeholder="Ingrese el ancho del rectangulo" required>
+      </div>
+      <button type="button" class="btn btn-primary" onclick="calcularAreaRectangulo()">Calcular Área</button>
+    </form>
+    <div id="resultadoRect" class="mt-3"></div>
+    <div id="promRectangulo" class="mt-3"></div>
+    <div id="tablaAreasRectangulo">
+
+    </div>
+
+    <h2 class="text-center">Calcular Área de un Triangulo</h2>
+    <form id="areaForm" class="mt-4">
+      <div class="form-group">
+        <label for="lado">Base del Triangulo</label>
+        <input type="number" class="form-control" id="baseTri" placeholder="Ingrese la base del triangulo" required>
+        <label for="lado">Altura del Triangulo</label>
+        <input type="number" class="form-control" id="alturaTri" placeholder="Ingrese la base del triangulo" required>
+        <label for="lado">Buscar Area</label>
+        <input type="number" class="form-control" id="buscarAreaCuad" placeholder="Ingrese el area a buscar" required>
+      </div>
+      <button type="button" class="btn btn-primary" onclick="calcularAreaTriangulo()">Calcular Área</button>
+      <button type="button" class="btn btn-primary" onclick="BuscarAreaCuadrado()">Buscar Área</button>
+    </form>
+    <div id="resultadoTri" class="mt-3"></div>
+    <div id="promTriangulo" class="mt-3"></div>
+    <div id="tablaAreasTri" class="mt-3"></div>
+
+    <h2 class="text-center">Calcular Área de un Circulo</h2>
+    <form id="areaForm" class="mt-4">
+      <div class="form-group">
+        <label for="lado">Radio del Circulo</label>
+        <input type="number" class="form-control" id="radioCirculo" placeholder="Ingrese el radio del circulo" required>
+        
+        <label for="lado">Buscar Area</label>
+        <input type="number" class="form-control" id="buscarAreaCuad" placeholder="Ingrese el area a buscar" required>
+      </div>
+      <button type="button" class="btn btn-primary" onclick="calcularAreaCirculo()">Calcular Área</button>
+      <button type="button" class="btn btn-primary" onclick="BuscarAreaCuadrado()">Buscar Área</button>
+    </form>
+    <div id="resultadoCirc" class="mt-3"></div>
+    <div id="promCirculo" class="mt-3"></div>
+    <div id="tablaAreasCirc" class="mt-3"></div>
+
+    <h2 class="text-center">Calcular Área de un Trapecio</h2>
+    <form id="areaForm" class="mt-4">
+      <div class="form-group">
+        <label for="lado">Base 1 del Trapecio</label>
+        <input type="number" class="form-control" id="base1" placeholder="Ingrese la base 1 del Trapecio" required>
+        <label for="lado">Base 2 del Trapecio</label>
+        <input type="number" class="form-control" id="base2" placeholder="Ingrese la base 2 del Trapecio" required>
+        <label for="lado">Altura del Trapecio</label>
+        <input type="number" class="form-control" id="alturaT" placeholder="Ingrese la altura del Trapecio" required>
+        <label for="lado">Buscar Area</label>
+        <input type="number" class="form-control" id="buscarAreaCuad" placeholder="Ingrese el area a buscar" required>
+      </div>
+      <button type="button" class="btn btn-primary" onclick="calcularAreaTrapecio()">Calcular Área</button>
+      <button type="button" class="btn btn-primary" onclick="BuscarAreaCuadrado()">Buscar Área</button>
+    </form>
+    <div id="resultadoTrapecio" class="mt-3"></div>
+    <div id="promTrapecio" class="mt-3"></div>
+    <div id="tablaAreasTrapecio" class="mt-3"></div>
+
+  </div>
+
+  <!-- Bootstrap JS y jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <!-- Script para calcular área -->
+  
+
+<style>
+  /* Color de fondo azul claro */
+  .navbar {
+    background-color: #87CEFA;
+  }
+  .navbar-brand, .nav-link {
+    color: #fff !important;
+  }
+  .navbar-brand:hover, .nav-link:hover {
+    color: #f0f0f0 !important;
+  }
+</style>
 </body>
 </html>
+
+

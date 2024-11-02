@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario de Cálculo de Volumenes</title>
+  <script defer src="../JS/main2.js"></script>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Menú</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="../index.html">Áreas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Volúmenes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Física Mecánica</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="container mt-5">
+    <h2 class="text-center">Calcular Volumen de un Cubo</h2>
+    <form id="areaForm" class="mt-4">
+      <div class="form-group">
+        <label for="lado">Lado del Cubo</label>
+        <input type="number" class="form-control" id="ladoCubo" placeholder="Ingrese el lado del cubo" required>
+        <label for="lado">Buscar Area</label>
+        <input type="number" class="form-control" id="buscarAreaCuad" placeholder="Ingrese el area a buscar" required>
+      </div>
+      <button type="button" class="btn btn-primary" onclick="calcularVolumenCubo()">Calcular Volumen</button>
+      <button type="button" class="btn btn-primary" onclick="BuscarAreaCuadrado()">Buscar Área</button>
+    </form>
+    <div id="resultadoCubo" class="mt-3"></div>
+    <div id="promCubo" class="mt-3"></div>
+    <div id="AreaCuadMaxima" class="mt-3"></div>
+    <div id="tablaVolumenCubo">
+
+    </div>
+    <h2 class="text-center">Calcular volumen de una Piramide</h2>
+    <form id="areaForm" class="mt-4">
+      <div class="form-group">
+        <label for="lado">Base de la Piramide</label>
+        <input type="number" class="form-control" id="basePir" placeholder="Ingrese la base de la Piramide" required>
+        <label for="lado">Altutra de la Piramide</label>
+        <input type="number" class="form-control" id="alturaPir" placeholder="Ingrese la altura de la Piramide" required>
+      </div>
+      <button type="button" class="btn btn-primary" onclick="calcularVolumenPiramide()">Calcular Volumen</button>
+    </form>
+    <div id="resultadoPir" class="mt-3"></div>
+    <div id="promPiramide"></div>
+    <div id="tablaVolumenPiramide">
+
+    </div>
+
+    <h2 class="text-center">Calcular Volumen de Cilindro</h2>
+    <form id="areaForm" class="mt-4">
+      <div class="form-group">
+        <label for="lado">Radio del Cilindro</label>
+        <input type="number" class="form-control" id="radioCil" placeholder="Ingrese el radio del cilindro" required>
+        <label for="lado">Altura del Cilindro</label>
+        <input type="number" class="form-control" id="alturaCil" placeholder="Ingrese la altura del cilindro" required>
+        <label for="lado">Buscar Area</label>
+        <input type="number" class="form-control" id="buscarAreaCuad" placeholder="Ingrese el area a buscar" required>
+      </div>
+      <button type="button" class="btn btn-primary" onclick="calcularVolumenCilindro()">Calcular Volumen</button>
+      <button type="button" class="btn btn-primary" onclick="BuscarAreaCuadrado()">Buscar Área</button>
+    </form>
+    <div id="resultadoVolCil" class="mt-3"></div>
+    <div id="promVolCil" class="mt-3"></div>
+    <div id="tablaVolumenCil" class="mt-3"></div>
+
+    
+
+    
+
+  </div>
+
+  <!-- Bootstrap JS y jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <!-- Script para calcular área -->
+  
+
+<style>
+  /* Color de fondo azul claro */
+  .navbar {
+    background-color: #87CEFA;
+  }
+  .navbar-brand, .nav-link {
+    color: #fff !important;
+  }
+  .navbar-brand:hover, .nav-link:hover {
+    color: #f0f0f0 !important;
+  }
+</style>
+</body>
+</html>
+
+
