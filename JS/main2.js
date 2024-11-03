@@ -4,7 +4,9 @@
           const carrito = JSON.parse(localStorage.getItem("carrito")) || []
           
 // Figura Cuadrado
+
           function calcularAreaCuadrado() {
+
             class Cuadrado {
 
                 static id = 0
@@ -22,7 +24,13 @@
               
               
               }
-            const cuadradosSave = JSON.parse(localStorage.getItem("listaCuadrados")) || [];
+              if(document.getElementById("lado").value=="")
+              {
+                document.getElementById("resultado").innerText="Ingrese un valor"
+              }
+              else
+              {
+                const cuadradosSave = JSON.parse(localStorage.getItem("listaCuadrados")) || [];
             let ladoCuadrado = document.getElementById("lado").value;
             const _cuadrado =  new Cuadrado(ladoCuadrado);
             area =  _cuadrado.cargarCuadrados(ladoCuadrado);
@@ -50,6 +58,8 @@
             let promedio = total/cuadradosSave.length
             document.getElementById("promCuadrado").innerText = `Promedio: ${promedio}`
            // document.getElementById("tablaAreas").innerText=`Lado: ${f.ladoCuadrado}`;
+              }
+            
           }
 
           function BuscarAreaCuadrado(type){
@@ -319,7 +329,7 @@
            // document.getElementById("tablaAreas").innerText=`Lado: ${f.ladoCuadrado}`;
           }
 
-          const trapeciosSave = [];
+          //const trapeciosSave = [];
           function calcularAreaTrapecio() {
             class Trapecio {
 
@@ -545,3 +555,6 @@
             document.getElementById("promVolCil").innerText = `Volumen Promedio: ${promedio}`
            // document.getElementById("tablaAreas").innerText=`Lado: ${f.ladoCuadrado}`;
           }
+
+
+          
