@@ -712,3 +712,68 @@
                 }
               
           }
+
+
+
+          function calcularFuerza() {
+            class Fuerza {
+
+                static id = 0
+                constructor (masa, aceleracion1, fuerza= null) {
+                    this.id = ++Fuerza.id
+                    this.masa = masa
+                    this.aceleracion1 = aceleracion1
+                    
+                    if(fuerza)
+                      this.fuerza = fuerza
+                }
+              
+                
+                  cargarFuerza = (masa,aceleracion1) => {
+                    let resultado = (masa * aceleracion1)
+                    return resultado
+                }
+              
+              
+              
+              }
+
+              if((document.getElementById("masa").value=="") || (document.getElementById("aceleracion1").value==""))
+                {
+                  document.getElementById("resultadoFuerza").innerText="Ingrese un valor"
+                }
+                else
+                {
+                  const fuerzaSave = JSON.parse(localStorage.getItem("listaFuerza")) || [];
+              //const piramidesSave = [];
+            
+            let masa = document.getElementById("masa").value;
+            let aceleracion1 = document.getElementById("aceleracion1").value;
+            
+            const _fuerza =  new Fuerza(masa, aceleracion1);
+            let fuerza =  _fuerza.cargarFuerza(masa, aceleracion1);
+            fuerzaSave.push(new Fuerza(masa, aceleracion1, fuerza));
+            localStorage.setItem("listaFuerza",JSON.stringify(fuerzaSave));
+            localStorage.setItem("masa", masa);
+            localStorage.setItem("aceleracion", aceleracion1);
+            localStorage.setItem("Fuerza", fuerza);
+            document.getElementById("resultadoFuerza").innerText = `La fuerza es es: ${fuerza}`;
+            let tablaFuerza = "<table width='100%' border='1'>";
+            tablaFuerza += `<tr><td>Masa</td><td>Aceleracion</td><td>Fuerza</td></tr>`
+
+           
+         fuerzaSave.forEach(f=>{
+           tablaFuerza += `<tr><td><strong>${f.masa}</strong></td><td><strong>${f.aceleracion1}</td><td><strong>${f.fuerza}</td></tr>`
+
+           
+         });
+         tablaFuerza+="</table>";
+         document.getElementById("tablaFuerza").innerHTML = tablaFuerza;
+           
+            const total = fuerzaSave.reduce((contador, fuerza) => contador + fuerza.fuerza, 0)
+            let promedio = total/fuerzaSave.length
+            document.getElementById("promFuerza").innerText = `Fuerza Promedio: ${promedio}`
+           // document.getElementById("tablaAreas").innerText=`Lado: ${f.ladoCuadrado}`;
+                }
+              
+          }
