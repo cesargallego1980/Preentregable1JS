@@ -21,44 +21,47 @@
             <a class="nav-link" href="../index.html">Áreas</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Volúmenes</a>
+            <a class="nav-link" href="./volumen.html">Volúmenes</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./fisica.html">Fisica</a>
+            <a class="nav-link" href="#">Fisica</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
   <div class="container mt-5">
-    <h2 class="text-center">Calcular Volumen de un Cubo</h2>
+    <h2 class="text-center">Calcular Velocidad de un Cuerpo</h2>
     <form id="areaForm" class="mt-4">
       <div class="form-group">
-        <label for="lado">Lado del Cubo</label>
-        <input type="number" class="form-control" id="ladoCubo" placeholder="Ingrese el lado del cubo" required>
-        
+        <label for="lado">Distancia</label>
+        <input type="number" class="form-control" id="distancia" placeholder="Ingrese la distancia" required>
+        <label for="lado">Tiempo</label>
+        <input type="number" class="form-control" id="tiempo" placeholder="Ingrese el tiempo" required>
       </div>
-      <button type="button" class="btn btn-primary" onclick="calcularVolumenCubo()">Calcular Volumen</button>
+      <button type="button" class="btn btn-primary" onclick="calcularVelocidad()">Calcular Velocidad</button>
       
     </form>
-    <div id="resultadoCubo" class="mt-3"></div>
-    <div id="promCubo" class="mt-3"></div>
-    <div id="tablaVolumenCubo">
+    <div id="resultadoVelocidad" class="mt-3"></div>
+    <div id="promVelocidad" class="mt-3"></div>
+    <div id="tablaVelocidad">
 
     </div>
-    <h2 class="text-center">Calcular volumen de una Piramide</h2>
+    <h2 class="text-center">Calcular aceleracion de un Cuerpo</h2>
     <form id="areaForm" class="mt-4">
       <div class="form-group">
-        <label for="Base">Base de la Piramide</label>
-        <input type="number" class="form-control" id="basePir" placeholder="Ingrese la base de la Piramide" required>
-        <label for="Altura">Altutra de la Piramide</label>
-        <input type="number" class="form-control" id="alturaPir" placeholder="Ingrese la altura de la Piramide" required>
+        <label for="Velocidad Inicial">Velocidad Inicial</label>
+        <input type="number" class="form-control" id="velocidadIni" placeholder="Ingrese la velocidad inicial" required>
+        <label for="Velocidad Final">Velocidad Final</label>
+        <input type="number" class="form-control" id="velocidadFin" placeholder="Ingrese la velocidad final" required>
+        <label for="Tiempo">Tiempo</label>
+        <input type="number" class="form-control" id="tiempoAce" placeholder="Ingrese el tiempo" required>
       </div>
-      <button type="button" class="btn btn-primary" onclick="calcularVolumenPiramide()">Calcular Volumen</button>
+      <button type="button" class="btn btn-primary" onclick="calcularAceleracion()">Calcular Volumen</button>
     </form>
-    <div id="resultadoPir" class="mt-3"></div>
-    <div id="promPiramide"></div>
-    <div id="tablaVolumenPiramide">
+    <div id="resultadoAce" class="mt-3"></div>
+    <div id="promAceleracion"></div>
+    <div id="tablaAceleracion">
 
     </div>
 

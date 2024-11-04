@@ -56,7 +56,7 @@
             document.getElementById("tablaAreas").innerHTML = tablaAreas;
             const total = cuadradosSave.reduce((contador, cuadrado) => contador + cuadrado.area, 0)
             let promedio = total/cuadradosSave.length
-            document.getElementById("promCuadrado").innerText = `Promedio: ${promedio}`
+            document.getElementById("promCuadrado").innerText = `Area Promedio: ${promedio}`
            // document.getElementById("tablaAreas").innerText=`Lado: ${f.ladoCuadrado}`;
               }
             
@@ -182,33 +182,39 @@
               
               
               }
-              
-            const rectangulosSave = JSON.parse(localStorage.getItem("listaRectangulos")) || [];
-            let ladoRect = document.getElementById("ladoRectangulo").value;
-            let anchoRect = document.getElementById("anchoRectangulo").value;
-            const _rectangulo =  new Rectangulo(ladoRect, anchoRect);
-            area =  _rectangulo.cargarRectangulos(ladoRect, anchoRect);
-            rectangulosSave.push(new Rectangulo(ladoRect, anchoRect, area));
-
-            localStorage.setItem("listaRectangulos",JSON.stringify(rectangulosSave));
-            localStorage.setItem("ladoRectangulo", ladoRect)
-            localStorage.setItem("anchoRectangulo", anchoRect)
-            localStorage.setItem("areaRectangulo", area)
-            document.getElementById("resultadoRect").innerText = `El área del rectangulo es: ${area}`;
+              if((document.getElementById("ladoRectangulo").value=="") || (document.getElementById("anchoRectangulo").value==""))
+                {
+                  document.getElementById("resultadoRect").innerText="Ingrese un valor"
+                }
+                else{
+                  const rectangulosSave = JSON.parse(localStorage.getItem("listaRectangulos")) || [];
+                  let ladoRect = document.getElementById("ladoRectangulo").value;
+                  let anchoRect = document.getElementById("anchoRectangulo").value;
+                  const _rectangulo =  new Rectangulo(ladoRect, anchoRect);
+                  area =  _rectangulo.cargarRectangulos(ladoRect, anchoRect);
+                  rectangulosSave.push(new Rectangulo(ladoRect, anchoRect, area));
+      
+                  localStorage.setItem("listaRectangulos",JSON.stringify(rectangulosSave));
+                  localStorage.setItem("ladoRectangulo", ladoRect)
+                  localStorage.setItem("anchoRectangulo", anchoRect)
+                  localStorage.setItem("areaRectangulo", area)
+                  document.getElementById("resultadoRect").innerText = `El área del rectangulo es: ${area}`;
+                  
+                  let tablaAreasRectangulo = "<table width='100%' border='1'>";
+                  tablaAreasRectangulo += `<tr><td>Largo</td><td>Ancho</td><td>Area del rectangulo</td></tr>`
+                  rectangulosSave.forEach(f=>{
+                    tablaAreasRectangulo += `<tr><td>${f.lado1}</td><td>${f.lado2}</td><td>${f.area}</td></tr>`;
+      
+                    
+                  })
+                  tablaAreasRectangulo += "</table>";
+                  document.getElementById("tablaAreasRectangulo").innerHTML = tablaAreasRectangulo;
+                  const total = rectangulosSave.reduce((contador, rectangulo) => contador + rectangulo.area, 0)
+                  let promedio = total/rectangulosSave.length
+                  document.getElementById("promRectangulo").innerText = `Promedio Rectangulo: ${promedio}`
+      
+                }
             
-            let tablaAreasRectangulo = "<table width='100%' border='1'>";
-            tablaAreasRectangulo += `<tr><td>Largo</td><td>Ancho</td><td>Area del rectangulo</td></tr>`
-            rectangulosSave.forEach(f=>{
-              tablaAreasRectangulo += `<tr><td>${f.lado1}</td><td>${f.lado2}</td><td>${f.area}</td></tr>`;
-
-              
-            })
-            tablaAreasRectangulo += "</table>";
-            document.getElementById("tablaAreasRectangulo").innerHTML = tablaAreasRectangulo;
-            const total = rectangulosSave.reduce((contador, rectangulo) => contador + rectangulo.area, 0)
-            let promedio = total/rectangulosSave.length
-            document.getElementById("promRectangulo").innerText = `Promedio Rectangulo: ${promedio}`
-
             
           }
 
@@ -232,7 +238,13 @@
               
               
               }
-              const triangulosSave = JSON.parse(localStorage.getItem("listaTriangulos")) || [];
+              if((document.getElementById("baseTri").value=="") || (document.getElementById("alturaTri").value==""))
+                {
+                  document.getElementById("resultadoTri").innerText="Ingrese un valor"
+                }
+                else
+                {
+                  const triangulosSave = JSON.parse(localStorage.getItem("listaTriangulos")) || [];
               // const triangulosSave = [];
             let baseTri = document.getElementById("baseTri").value;
             let alturaTri = document.getElementById("alturaTri").value;
@@ -269,6 +281,8 @@
             let promedio = total/triangulosSave.length
             document.getElementById("promTriangulo").innerText = `Promedio Triangulo: ${promedio}`
            // document.getElementById("tablaAreas").innerText=`Lado: ${f.ladoCuadrado}`;
+                }
+              
           }
 
           function calcularAreaCirculo() {
@@ -291,7 +305,13 @@
               
               
               }
-              const circulosSave = JSON.parse(localStorage.getItem("listaCirculos")) || [];
+              if((document.getElementById("radioCirculo").value==""))
+                {
+                  document.getElementById("resultadoCirc").innerText="Ingrese un valor"
+                }
+                else
+                {
+                  const circulosSave = JSON.parse(localStorage.getItem("listaCirculos")) || [];
               //const circulosSave = [];
             let radioCirculo = document.getElementById("radioCirculo").value;
             const _circulo =  new Circulo(radioCirculo);
@@ -316,17 +336,13 @@
             tablaAreasCirc+="</table>";
             document.getElementById("tablaAreasCirc").innerHTML = tablaAreasCirc;
             
-            //document.getElementById("promCirculo").innerText = `Promedio Circulo: ${promedio}`
-            // circulosSave.forEach(f=>{
-            //   document.getElementById("tablaAreasCirc").innerText = `Lado: <strong>${f.ladoCuadrado}</strong><br>El área del cuadrado es: <strong>${f.area}</strong>`;
-
-            //   // document.getElementById("tablaAreas").innerText=`Lado: ${f.ladoCuadrado}`;
-            //   // console.log("item->", f.lado, f.area)
-            // })
+            
             const total = circulosSave.reduce((contador, circulo) => contador + circulo.area, 0)
             let promedio = total/circulosSave.length
             document.getElementById("promCirculo").innerText = `Promedio Circulo: ${promedio}`
            // document.getElementById("tablaAreas").innerText=`Lado: ${f.ladoCuadrado}`;
+                }
+              
           }
 
           //const trapeciosSave = [];
@@ -348,11 +364,16 @@
                     let resultado = (1/2)*(parseInt(base1) + parseInt(base2))*alturaT;
                     return resultado
                 }
-              
-              
+                
               
               }
-              const trapeciosSave = JSON.parse(localStorage.getItem("listaTrapecios")) || [];
+              if((document.getElementById("base1").value=="") || (document.getElementById("base2").value=="") || (document.getElementById("alturaT").value==""))
+                {
+                  document.getElementById("resultadoTrapecio").innerText="Ingrese un valor"
+                }
+                else
+                {
+                  const trapeciosSave = JSON.parse(localStorage.getItem("listaTrapecios")) || [];
             let base1 = document.getElementById("base1").value;
             let base2 = document.getElementById("base2").value;
             let alturaT = document.getElementById("alturaT").value;
@@ -370,10 +391,7 @@
             trapeciosSave.forEach(f=>{
               tablaAreasTrapecio += `<tr><td>${f.base1}</td><td>${f.base2}</td><td>${f.alturaT}</td><td>${f.area}</td></tr>`;
 
-              //document.getElementById("tablaAreasTrapecio").innerText = `Lado: <strong>${f.base1}</strong><br>El área del cuadrado es: <strong>${f.area}</strong>`;
-
-              // document.getElementById("tablaAreas").innerText=`Lado: ${f.ladoCuadrado}`;
-              // console.log("item->", f.lado, f.area)
+              
             })
             tablaAreasTrapecio += "</table>";
             document.getElementById("tablaAreasTrapecio").innerHTML = tablaAreasTrapecio;
@@ -381,6 +399,8 @@
             let promedio = total/trapeciosSave.length
             document.getElementById("promTrapecio").innerText = `Promedio Trapecio: ${promedio}`
            // document.getElementById("tablaAreas").innerText=`Lado: ${f.ladoCuadrado}`;
+                }
+              
           }
 //Figura Cubo
           function calcularVolumenCubo() {
@@ -403,7 +423,12 @@
               
               
               }
-              const cubosSave = JSON.parse(localStorage.getItem("listaCubos")) || [];
+              if((document.getElementById("ladoCubo").value==""))
+                {
+                  document.getElementById("resultadoCubo").innerText="Ingrese un valor"
+                }
+                else{
+                  const cubosSave = JSON.parse(localStorage.getItem("listaCubos")) || [];
               // const cubosSave = [];
             let ladoCubo = document.getElementById("ladoCubo").value;
             const _cubo =  new Cubo(ladoCubo);
@@ -438,6 +463,8 @@
             let promedio = total/cubosSave.length
             document.getElementById("promCubo").innerText = `Volumen Promedio: ${promedio}`
            // document.getElementById("tablaAreas").innerText=`Lado: ${f.ladoCuadrado}`;
+                }
+              
           }
 // Funcion Volumen Piramide
           function calcularVolumenPiramide() {
@@ -461,41 +488,44 @@
               
               
               }
-              const piramidesSave = JSON.parse(localStorage.getItem("listaPiramides")) || [];
+              if((document.getElementById("basePir").value=="") || (document.getElementById("alturaPir").value==""))
+                {
+                  document.getElementById("resultadoPir").innerText="Ingrese un valor"
+                }
+                else
+                {
+                  const piramidesSave = JSON.parse(localStorage.getItem("listaPiramides")) || [];
               
-            let basePir = document.getElementById("basePir").value;
-            let alturaPir = document.getElementById("alturaPir").value;
-            const _piramide =  new Piramide(basePir, alturaPir);
-            volumen =  _piramide.cargarPiramides(basePir, alturaPir);
-            piramidesSave.push(new Piramide(basePir, alturaPir, volumen));
-            localStorage.setItem("listaPiramides",JSON.stringify(piramidesSave));
-            localStorage.setItem("basePiramide", basePir);
-            localStorage.setItem("alturaPiramide", alturaPir);
-            document.getElementById("resultadoPir").innerText = `El volumen de la piramide es: ${volumen}`;
-            let tablaVolPir = "<table width='100%' border='1'>";
-            tablaVolPir += `<tr><td>Base</td><td>Altura</td><td>Volumen</td></tr>`
-
-           
-         piramidesSave.forEach(f=>{
-           tablaVolPir += `<tr><td><strong>${f.baseP}</strong></td><td><strong>${f.alturaP}</td><td><strong>${f.volumen}</td></tr>`
-
-           //document.getElementById("tablaAreas").innerHTML += `Lado: <strong>${f.ladoCuadrado}</strong><br>El área del cuadrado es: <strong>${f.area}</strong>`;
-
-           // document.getElementById("tablaAreas").innerText=`Lado: ${f.ladoCuadrado}`;
-           // console.log("item->", f.lado, f.area)
-         });
-         tablaVolPir+="</table>";
-         document.getElementById("tablaVolumenPiramide").innerHTML = tablaVolPir;
-            // piramidesSave.forEach(f=>{
-            //   document.getElementById("tablaVolumenPiramide").innerText = `Lado: <strong>${f.basePir}</strong><br>El volumen de la piramide es: <strong>${f.volumen}</strong>`;
-
-            //   // document.getElementById("tablaAreas").innerText=`Lado: ${f.ladoCuadrado}`;
-            //   // console.log("item->", f.lado, f.area)
-            // })
-            const total = piramidesSave.reduce((contador, piramide) => contador + piramide.volumen, 0)
-            let promedio = total/piramidesSave.length
-            document.getElementById("promPiramide").innerText = `Volumen Promedio: ${promedio}`
-           // document.getElementById("tablaAreas").innerText=`Lado: ${f.ladoCuadrado}`;
+                  let basePir = document.getElementById("basePir").value;
+                  let alturaPir = document.getElementById("alturaPir").value;
+                  const _piramide =  new Piramide(basePir, alturaPir);
+                  volumen =  _piramide.cargarPiramides(basePir, alturaPir);
+                  piramidesSave.push(new Piramide(basePir, alturaPir, volumen));
+                  localStorage.setItem("listaPiramides",JSON.stringify(piramidesSave));
+                  localStorage.setItem("basePiramide", basePir);
+                  localStorage.setItem("alturaPiramide", alturaPir);
+                  document.getElementById("resultadoPir").innerText = `El volumen de la piramide es: ${volumen}`;
+                  let tablaVolPir = "<table width='100%' border='1'>";
+                  tablaVolPir += `<tr><td>Base</td><td>Altura</td><td>Volumen</td></tr>`
+      
+                 
+               piramidesSave.forEach(f=>{
+                 tablaVolPir += `<tr><td><strong>${f.baseP}</strong></td><td><strong>${f.alturaP}</td><td><strong>${f.volumen}</td></tr>`
+      
+                 //document.getElementById("tablaAreas").innerHTML += `Lado: <strong>${f.ladoCuadrado}</strong><br>El área del cuadrado es: <strong>${f.area}</strong>`;
+      
+                 // document.getElementById("tablaAreas").innerText=`Lado: ${f.ladoCuadrado}`;
+                 // console.log("item->", f.lado, f.area)
+               });
+               tablaVolPir+="</table>";
+               document.getElementById("tablaVolumenPiramide").innerHTML = tablaVolPir;
+                  
+                  const total = piramidesSave.reduce((contador, piramide) => contador + piramide.volumen, 0)
+                  let promedio = total/piramidesSave.length
+                  document.getElementById("promPiramide").innerText = `Volumen Promedio: ${promedio}`
+                 // document.getElementById("tablaAreas").innerText=`Lado: ${f.ladoCuadrado}`;
+                }
+              
           }
 
           function calcularVolumenCilindro() {
@@ -519,7 +549,14 @@
               
               
               }
-              const cilindrosSave = JSON.parse(localStorage.getItem("listaCilindros")) || [];
+
+              if((document.getElementById("radioCil").value=="") || (document.getElementById("alturaCil").value==""))
+                {
+                  document.getElementById("resultadoVolCil").innerText="Ingrese un valor"
+                }
+                else
+                {
+                  const cilindrosSave = JSON.parse(localStorage.getItem("listaCilindros")) || [];
               //const piramidesSave = [];
             let radioCil = document.getElementById("radioCil").value;
             let alturaCil = document.getElementById("alturaCil").value;
@@ -537,24 +574,141 @@
          cilindrosSave.forEach(f=>{
            tablaVolCil += `<tr><td><strong>${f.radioCil}</strong></td><td><strong>${f.alturaCil}</td><td><strong>${f.volumen}</td></tr>`
 
-           //document.getElementById("tablaAreas").innerHTML += `Lado: <strong>${f.ladoCuadrado}</strong><br>El área del cuadrado es: <strong>${f.area}</strong>`;
-
-           // document.getElementById("tablaAreas").innerText=`Lado: ${f.ladoCuadrado}`;
-           // console.log("item->", f.lado, f.area)
+           
          });
          tablaVolCil+="</table>";
          document.getElementById("tablaVolumenCil").innerHTML = tablaVolCil;
-            // piramidesSave.forEach(f=>{
-            //   document.getElementById("tablaVolumenPiramide").innerText = `Lado: <strong>${f.basePir}</strong><br>El volumen de la piramide es: <strong>${f.volumen}</strong>`;
-
-            //   // document.getElementById("tablaAreas").innerText=`Lado: ${f.ladoCuadrado}`;
-            //   // console.log("item->", f.lado, f.area)
-            // })
+           
             const total = cilindrosSave.reduce((contador, cilindro) => contador + cilindro.volumen, 0)
             let promedio = total/cilindrosSave.length
             document.getElementById("promVolCil").innerText = `Volumen Promedio: ${promedio}`
            // document.getElementById("tablaAreas").innerText=`Lado: ${f.ladoCuadrado}`;
+                }
+              
           }
 
 
-          
+          function calcularVelocidad() {
+            class Velocidad {
+
+                static id = 0
+                constructor (distancia, tiempo, velocidad= null) {
+                    this.id = ++Velocidad.id
+                    this.distancia = distancia
+                    this.tiempo = tiempo
+                    if(velocidad)
+                      this.velocidad = velocidad
+                }
+              
+                
+                  cargarVelocidad = (distancia,tiempo) => {
+                    let resultado = distancia/tiempo
+                    return resultado
+                }
+              
+              
+              
+              }
+
+              if((document.getElementById("distancia").value=="") || (document.getElementById("tiempo").value==""))
+                {
+                  document.getElementById("resultadoVelocidad").innerText="Ingrese un valor"
+                }
+                else
+                {
+                  const velocidadSave = JSON.parse(localStorage.getItem("listaVelocidad")) || [];
+              //const piramidesSave = [];
+            
+            let distancia = document.getElementById("distancia").value;
+            let tiempo = document.getElementById("tiempo").value;
+            const _velocidad =  new Velocidad(distancia, tiempo);
+            let velocidad =  _velocidad.cargarVelocidad(distancia, tiempo);
+            velocidadSave.push(new Velocidad(distancia, tiempo, velocidad));
+            localStorage.setItem("listaVelocidad",JSON.stringify(velocidadSave));
+            localStorage.setItem("distancia", distancia);
+            localStorage.setItem("tiempo", tiempo);
+            localStorage.setItem("velocidad", velocidad);
+            document.getElementById("resultadoVelocidad").innerText = `La velocidades es: ${velocidad}`;
+            let tablaVelocidad = "<table width='100%' border='1'>";
+            tablaVelocidad += `<tr><td>Distancia</td><td>Tiempo</td><td>Velocidad</td></tr>`
+
+           
+         velocidadSave.forEach(f=>{
+           tablaVelocidad += `<tr><td><strong>${f.distancia}</strong></td><td><strong>${f.tiempo}</td><td><strong>${f.velocidad}</td></tr>`
+
+           
+         });
+         tablaVelocidad+="</table>";
+         document.getElementById("tablaVelocidad").innerHTML = tablaVelocidad;
+           
+            const total = velocidadSave.reduce((contador, velocidad) => contador + velocidad.velocidad, 0)
+            let promedio = total/velocidadSave.length
+            document.getElementById("promVelocidad").innerText = `Velocidad Promedio: ${promedio}`
+           // document.getElementById("tablaAreas").innerText=`Lado: ${f.ladoCuadrado}`;
+                }
+              
+          }
+
+
+          function calcularAceleracion() {
+            class Aceleracion {
+
+                static id = 0
+                constructor (velocIni, veloFin, tiempo, aceleracion= null) {
+                    this.id = ++Aceleracion.id
+                    this.velocIni = velocIni
+                    this.veloFin = veloFin
+                    this.tiempo = tiempo
+                    if(aceleracion)
+                      this.aceleracion = aceleracion
+                }
+              
+                
+                  cargarAceleracion = (velocIni,veloFin, tiempo) => {
+                    let resultado = (veloFin - velocIni)/tiempo
+                    return resultado
+                }
+              
+              
+              
+              }
+
+              if((document.getElementById("velocidadIni").value=="") || (document.getElementById("velocidadFin").value=="") || (document.getElementById("tiempoAce").value==""))
+                {
+                  document.getElementById("resultadoAce").innerText="Ingrese un valor"
+                }
+                else
+                {
+                  const aceleracionSave = JSON.parse(localStorage.getItem("listaAceleracion")) || [];
+              //const piramidesSave = [];
+            
+            let veloIni = document.getElementById("velocidadIni").value;
+            let veloFin = document.getElementById("velocidadFin").value;
+            let tiempoAce = document.getElementById("tiempoAce").value;
+            const _aceleracion =  new Aceleracion(veloIni, veloFin);
+            let aceleracion =  _aceleracion.cargarAceleracion(veloIni, veloFin, tiempoAce);
+            aceleracionSave.push(new Aceleracion(veloIni, veloFin, tiempoAce, aceleracion));
+            localStorage.setItem("listaAceleracion",JSON.stringify(aceleracionSave));
+            localStorage.setItem("VelocidadIni", veloIni);
+            localStorage.setItem("VelocidadFin", veloFin);
+            localStorage.setItem("Tiempo", tiempoAce);
+            document.getElementById("resultadoAce").innerText = `La aceleracion es: ${aceleracion}`;
+            let tablaAceleracion = "<table width='100%' border='1'>";
+            tablaAceleracion += `<tr><td>Velocidad Inicial</td><td>Velocidad Final</td><td>Tiempo</td><td>Aceleracion</td></tr>`
+
+           
+         aceleracionSave.forEach(f=>{
+           tablaAceleracion += `<tr><td><strong>${f.velocIni}</strong></td><td><strong>${f.veloFin}</td><td><strong>${f.tiempo}</td><td><strong>${f.aceleracion}</td></tr>`
+
+           
+         });
+         tablaAceleracion+="</table>";
+         document.getElementById("tablaAceleracion").innerHTML = tablaAceleracion;
+           
+            const total = aceleracionSave.reduce((contador, aceleracion) => contador + aceleracion.aceleracion, 0)
+            let promedio = total/aceleracionSave.length
+            document.getElementById("promAceleracion").innerText = `Aceleracion Promedio: ${promedio}`
+           // document.getElementById("tablaAreas").innerText=`Lado: ${f.ladoCuadrado}`;
+                }
+              
+          }
