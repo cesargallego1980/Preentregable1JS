@@ -65,14 +65,25 @@
           function BuscarAreaCuadrado(type){
             if(type == 1){
               let areaMax = document.getElementById("buscarAreaCuad");
-              if(areaMax && !areaMax.value){
-                return;
+              if(areaMax.value==""){
+                document.getElementById("AreaCuadMaxima").innerText="Ingrese un valor a buscar"
               }
-              const cuadradosSave = JSON.parse(localStorage.getItem("listaCuadrados")) || []
-              const filtrados = cuadradosSave.filter((cuadrado) =>cuadrado.area && cuadrado.area <= areaMax.value)
-              let filtradosMostrar = "";
-              filtrados.forEach(f=>{
-                filtradosMostrar +=`Area Maxima: ${f.area} <br/>`;
+              else
+              {
+                if(areaMax && !areaMax.value){
+                  return;
+                }
+                const cuadradosSave = JSON.parse(localStorage.getItem("listaCuadrados")) || []
+                const filtrados = cuadradosSave.filter((cuadrado) =>cuadrado.area && cuadrado.area <= areaMax.value)
+                if(filtrados.length==0)
+                  {
+                    document.getElementById("AreaCuadMaxima").innerText="No hay registros"
+                  }
+                  else
+                  {
+                    let filtradosMostrar = "";
+                  filtrados.forEach(f=>{
+                  filtradosMostrar +=`Area Maxima: ${f.area} <br/>`;
                 //document.getElementById("AreaCuadMaxima").innerText=`Area Maxima: ${filtrados}`
                 //document.getElementById("tablaAreasTrapecio").innerText = `Lado: <strong>${f.base1}</strong><br>El área del cuadrado es: <strong>${f.area}</strong>`;
   
@@ -80,36 +91,66 @@
                 // console.log("item->", f.lado, f.area)
               })
               document.getElementById("AreaCuadMaxima").innerHTML=filtradosMostrar
+                  }
+              }
+              
+              
          
             }
 
             if(type == 2){
               let areaMax = document.getElementById("buscarAreaRect");
-              if(areaMax && !areaMax.value){
-                return;
+              if(areaMax.value==""){
+                document.getElementById("AreaRectMaxima").innerText="Ingrese un valor a buscar"
               }
-              const rectangulosSave = JSON.parse(localStorage.getItem("listaRectangulos")) || []
-              const filtrados = rectangulosSave.filter((rectangulo) =>rectangulo.area && rectangulo.area <= areaMax.value)
-              let filtradosMostrar = "";
-              filtrados.forEach(f=>{
-                filtradosMostrar +=`Area Maxima: ${f.area} <br/>`;
-                //document.getElementById("AreaCuadMaxima").innerText=`Area Maxima: ${filtrados}`
-                //document.getElementById("tablaAreasTrapecio").innerText = `Lado: <strong>${f.base1}</strong><br>El área del cuadrado es: <strong>${f.area}</strong>`;
-  
-                // document.getElementById("tablaAreas").innerText=`Lado: ${f.ladoCuadrado}`;
-                // console.log("item->", f.lado, f.area)
-              })
-              document.getElementById("AreaRectMaxima").innerHTML=filtradosMostrar
+              else
+              {
+                if(areaMax && !areaMax.value){
+                  return;
+                }
+                const rectangulosSave = JSON.parse(localStorage.getItem("listaRectangulos")) || []
+                const filtrados = rectangulosSave.filter((rectangulo) =>rectangulo.area && rectangulo.area <= areaMax.value)
+                if(filtrados.length==0)
+                {
+                  document.getElementById("AreaRectMaxima").innerText="No hay registros"
+                }
+                else
+                {
+                  let filtradosMostrar = "";
+                  filtrados.forEach(f=>{
+                    filtradosMostrar +=`Area Maxima: ${f.area} <br/>`;
+                    //document.getElementById("AreaCuadMaxima").innerText=`Area Maxima: ${filtrados}`
+                    //document.getElementById("tablaAreasTrapecio").innerText = `Lado: <strong>${f.base1}</strong><br>El área del cuadrado es: <strong>${f.area}</strong>`;
+      
+                    // document.getElementById("tablaAreas").innerText=`Lado: ${f.ladoCuadrado}`;
+                    // console.log("item->", f.lado, f.area)
+                  })
+                  document.getElementById("AreaRectMaxima").innerHTML=filtradosMostrar
+                }
+              }
+              
+              
             }
 
             if(type == 3){
               let areaMax = document.getElementById("buscarAreaTri");
-              if(areaMax && !areaMax.value){
-                return;
+              if(areaMax.value==""){
+                document.getElementById("AreaTriMaxima").innerText="Ingrese un valor a buscar"
               }
-              const triangulosSave = JSON.parse(localStorage.getItem("listaTriangulos")) || []
-              const filtrados = triangulosSave.filter((triangulo) =>triangulo.area && triangulo.area <= areaMax.value)
-              let filtradosMostrar = "";
+              else
+              {
+                if(areaMax && !areaMax.value){
+                  return;
+                }
+                const triangulosSave = JSON.parse(localStorage.getItem("listaTriangulos")) || []
+                const filtrados = triangulosSave.filter((triangulo) =>triangulo.area && triangulo.area <= areaMax.value)
+                if(filtrados.length==0)
+                  {
+                    document.getElementById("AreaTriMaxima").innerText="No hay registros"
+                  }
+                  else
+                  {
+                    let filtradosMostrar = "";
               filtrados.forEach(f=>{
                 filtradosMostrar +=`Area Maxima: ${f.area} <br/>`;
                 //document.getElementById("AreaCuadMaxima").innerText=`Area Maxima: ${filtrados}`
@@ -119,17 +160,31 @@
                 // console.log("item->", f.lado, f.area)
               })
               document.getElementById("AreaTriMaxima").innerHTML=filtradosMostrar
+                  }
+              }
+              
+              
             }
 
             if(type == 4){
               let areaMax = document.getElementById("buscarAreaCirc");
-              
-              if(areaMax && !areaMax.value){
-                return;
+              if(areaMax.value==""){
+                document.getElementById("AreaCircMaxima").innerText="Ingrese un valor a buscar"
               }
-              const circulosSave = JSON.parse(localStorage.getItem("listaCirculos")) || []
-              const filtrados = circulosSave.filter((circulo) =>circulo.area && circulo.area <= areaMax.value)
-              let filtradosMostrar = "";
+              else
+              {
+                if(areaMax && !areaMax.value){
+                  return;
+                }
+                const circulosSave = JSON.parse(localStorage.getItem("listaCirculos")) || []
+                const filtrados = circulosSave.filter((circulo) =>circulo.area && circulo.area <= areaMax.value)
+                if(filtrados.length==0)
+                  {
+                    document.getElementById("AreaCircMaxima").innerText="No hay registros"
+                  }
+                  else
+                  {
+                    let filtradosMostrar = "";
               filtrados.forEach(f=>{
                 filtradosMostrar +=`Area Maxima: ${f.area} <br/>`;
                 //document.getElementById("AreaCuadMaxima").innerText=`Area Maxima: ${filtrados}`
@@ -139,22 +194,40 @@
                 // console.log("item->", f.lado, f.area)
               })
               document.getElementById("AreaCircMaxima").innerHTML=filtradosMostrar
+                  }
+              }
+              
+              
             }
 
             if(type == 5){
               let areaMax = document.getElementById("buscarAreaTrap");
-              
-              if(areaMax && !areaMax.value){
-                return;
+              if(areaMax.value==""){
+                document.getElementById("AreaTrapMaxima").innerText="Ingrese un valor a buscar"
               }
-              const trapeciosSave = JSON.parse(localStorage.getItem("listaTrapecios")) || []
-              const filtrados = trapeciosSave.filter((trapecio) =>trapecio.area && trapecio.area <= areaMax.value)
-              let filtradosMostrar = "";
+              else
+              {
+                if(areaMax && !areaMax.value){
+                  return;
+                }
+                const trapeciosSave = JSON.parse(localStorage.getItem("listaTrapecios")) || []
+                const filtrados = trapeciosSave.filter((trapecio) =>trapecio.area && trapecio.area <= areaMax.value)
+                if(filtrados.length==0)
+                  {
+                    document.getElementById("AreaTrapMaxima").innerText="No hay registros"
+                  }
+                  else
+                  {
+                    let filtradosMostrar = "";
               filtrados.forEach(f=>{
                 filtradosMostrar +=`Area Maxima: ${f.area} <br/>`;
                 
               })
               document.getElementById("AreaTrapMaxima").innerHTML=filtradosMostrar
+                  }
+              }
+              
+              
             }
               
            
