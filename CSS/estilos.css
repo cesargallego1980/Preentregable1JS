@@ -1,0 +1,10 @@
+ /* Color de fondo azul claro */
+ .navbar {
+    background-color: #87CEFA;
+  }
+  .navbar-brand, .nav-link {
+    color: #fff !important;
+  }
+  .navbar-brand:hover, .nav-link:hover {
+    color: #f0f0f0 !important;
+}
