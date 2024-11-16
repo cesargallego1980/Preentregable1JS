@@ -1,6 +1,93 @@
 
+function mostrarRegistros(tipo) {
+  if (tipo == 1) {
+    let tablaAreas = "<table width='100%' border='1'>"
+    tablaAreas += `<tr><td>Lado</td><td>Area del cuadrado</td></tr>`
+    fetch("../db/dataCuad.json")
 
+      .then(response => response.json())
+      .then(data => {
+        data.forEach(cuadrado => {
+          tablaAreas += `<tr><td><strong>${cuadrado.lado}</strong></td><td><strong>${cuadrado.area}</td></tr>`
 
+        })
+        tablaAreas += "</table>";
+        document.getElementById("tablaAreas").innerHTML = tablaAreas;
+      })
+
+  }
+  if (tipo == 2) {
+    let tablaAreas = "<table width='100%' border='1'>"
+    tablaAreas += `<tr><td>Lado 1</td><td>Lado 2</td><td>Area del cuadrado</td></tr>`
+    fetch("../db/dataRect.json")
+
+      .then(response => response.json())
+      .then(data => {
+        data.forEach(rectangulo => {
+          tablaAreas += `<tr><td><strong>${rectangulo.lado1}</strong></td><td><strong>${rectangulo.lado2}</td><td><strong>${rectangulo.area}</td></tr>`
+
+        })
+        tablaAreas += "</table>";
+        document.getElementById("tablaAreasRectangulo").innerHTML = tablaAreas;
+      })
+
+  }
+  if (tipo == 3) {
+    let tablaAreas = "<table width='100%' border='1'>"
+    tablaAreas += `<tr><td>Base</td><td>Altura</td><td>Area</td></tr>`
+    fetch("../db/dataTri.json")
+
+      .then(response => response.json())
+      .then(data => {
+        data.forEach(triangulo => {
+          tablaAreas += `<tr><td><strong>${triangulo.base}</strong></td><td><strong>${triangulo.altura}</td><td><strong>${triangulo.area}</td></tr>`
+
+        })
+        tablaAreas += "</table>";
+        document.getElementById("tablaAreasTri").innerHTML = tablaAreas;
+      })
+
+  }
+  if (tipo == 4) {
+    let tablaAreas = "<table width='100%' border='1'>"
+    tablaAreas += `<tr><td>Radio</td><td>Area del circulo</td></tr>`
+    fetch("../db/dataCirc.json")
+
+      .then(response => response.json())
+      .then(data => {
+        data.forEach(circulo => {
+          tablaAreas += `<tr><td><strong>${circulo.radio}</strong></td><td><strong>${circulo.area}</td></tr>`
+
+        })
+        tablaAreas += "</table>";
+        document.getElementById("tablaAreasCirc").innerHTML = tablaAreas;
+      })
+  }
+  if (tipo == 5) {
+    let tablaAreas = "<table width='100%' border='1'>"
+    tablaAreas += `<tr><td>Base 1</td><td>Base 2</td><td>Altura</td><td>Area del Trapecio</td></tr>`
+    fetch("../db/dataTrap.json")
+
+      .then(response => response.json())
+      .then(data => {
+        data.forEach(trapecio => {
+          tablaAreas += `<tr><td><strong>${trapecio.base1}</strong></td><td><strong>${trapecio.base2}</td><td><strong>${trapecio.altura}</td><td><strong>${trapecio.area}</td></tr>`
+
+        })
+        tablaAreas += "</table>";
+        document.getElementById("tablaAreasTrapecio").innerHTML = tablaAreas;
+      })
+
+  }
+}
+function alertaError() {
+  Swal.fire({
+    icon: "error",
+    title: "Oops...",
+    text: "Debes ingresar un valor correcto mayor a 0!",
+
+  });
+}
 
 function BuscarAreaCuadrado(type) {
   if (type == 1) {
@@ -13,19 +100,15 @@ function BuscarAreaCuadrado(type) {
         return;
       }
       const cuadradosSave = JSON.parse(localStorage.getItem("listaCuadrados")) || []
-      const filtrados = cuadradosSave.filter((cuadrado) => cuadrado.area && cuadrado.area <= areaMax.value)
+      const filtrados = cuadradosSave.filter((cuadradoz) => cuadradoz.Area && cuadradoz.Area <= areaMax.value)
       if (filtrados.length == 0) {
         document.getElementById("AreaCuadMaxima").innerText = "No hay registros"
       }
       else {
         let filtradosMostrar = "";
         filtrados.forEach(f => {
-          filtradosMostrar += `Area Maxima: ${f.area} <br/>`;
-          //document.getElementById("AreaCuadMaxima").innerText=`Area Maxima: ${filtrados}`
-          //document.getElementById("tablaAreasTrapecio").innerText = `Lado: <strong>${f.base1}</strong><br>El área del cuadrado es: <strong>${f.area}</strong>`;
+          filtradosMostrar += `Area Maxima: ${f.Area} <br/>`;
 
-          // document.getElementById("tablaAreas").innerText=`Lado: ${f.ladoCuadrado}`;
-          // console.log("item->", f.lado, f.area)
         })
         document.getElementById("AreaCuadMaxima").innerHTML = filtradosMostrar
       }
@@ -393,31 +476,45 @@ function calculaAreas(tipo) {
 
 
   if (tipo == 1) {
-    if (document.getElementById("lado").value == "") {
-      document.getElementById("resultado").innerText = "Ingrese un valor"
-    }
-    else {
-      const cuadradosSave = JSON.parse(localStorage.getItem("listaCuadrados")) || [];
-      let ladoCuadrado = document.getElementById("lado").value;
-      const _cuadrado = new calculaAreas(ladoCuadrado, 0, 0, 0, 0, 0);
-      area = _cuadrado.cargarCuadrados(ladoCuadrado);
-      cuadradosSave.push({ lado: ladoCuadrado, Area: area });
-      localStorage.setItem("listaCuadrados", JSON.stringify(cuadradosSave));
-      document.getElementById("resultado").innerText = `El área del cuadrado es: ${area}`;
-      let tablaAreas = "<table width='100%' border='1'>";
-      tablaAreas += `<tr><td>Lado</td><td>Area del cuadrado</td></tr>`
+    try {
+      mensaje = alertaError()
+      if (document.getElementById("lado").value != "" && document.getElementById("lado").value > 0) {
+        // document.getElementById("resultado").innerText = "Ingrese un valor"
+        const cuadradosSave = JSON.parse(localStorage.getItem("listaCuadrados")) || [];
+        let ladoCuadrado = document.getElementById("lado").value;
+        const _cuadrado = new calculaAreas(ladoCuadrado, 0, 0, 0, 0, 0);
+        area = _cuadrado.cargarCuadrados(ladoCuadrado);
+        cuadradosSave.push({ lado: ladoCuadrado, Area: area });
+        localStorage.setItem("listaCuadrados", JSON.stringify(cuadradosSave));
+        document.getElementById("resultado").innerText = `El área del cuadrado es: ${area}`;
+        let tablaAreas = "<table width='100%' border='1'>";
+        tablaAreas += `<tr><td>Lado</td><td>Area del cuadrado</td></tr>`
 
 
-      cuadradosSave.forEach(f => {
-        tablaAreas += `<tr><td><strong>${f.lado}</strong></td><td><strong>${f.Area}</td></tr>`
-      });
-      tablaAreas += "</table>";
-      document.getElementById("tablaAreas").innerHTML = tablaAreas;
-      const total = cuadradosSave.reduce((contador, cuadrado) => contador + cuadrado.Area, 0)
-      let promedio = total / cuadradosSave.length
-      document.getElementById("promCuadrado").innerText = `Area Promedio: ${promedio}`
-      // document.getElementById("tablaAreas").innerText=`Lado: ${f.ladoCuadrado}`;
+        cuadradosSave.forEach(f => {
+          tablaAreas += `<tr><td><strong>${f.lado}</strong></td><td><strong>${f.Area}</td></tr>`
+        });
+        tablaAreas += "</table>";
+        document.getElementById("tablaAreas").innerHTML = tablaAreas;
+        const total = cuadradosSave.reduce((contador, cuadrado) => contador + cuadrado.Area, 0)
+        let promedio = total / cuadradosSave.length
+        document.getElementById("promCuadrado").innerText = `Area Promedio: ${promedio}`
+        Swal.fire({
+          title: "Buen Trabajo!",
+          text: "Area Calculada!",
+          icon: "success"
+        });
+      }
+      else {
+
+        throw new Error(mensaje)
+      }
     }
+    catch (err) {
+      mensaje
+    }
+
+
   }
   if (tipo == 2) {
     if ((document.getElementById("ladoRectangulo").value == "") || (document.getElementById("anchoRectangulo").value == "")) {
@@ -445,6 +542,11 @@ function calculaAreas(tipo) {
       const total = rectangulosSave.reduce((contador, rectangulo) => contador + rectangulo.area, 0)
       let promedio = total / rectangulosSave.length
       document.getElementById("promRectangulo").innerText = `Promedio Rectangulo: ${promedio}`
+      Swal.fire({
+        title: "Buen Trabajo!",
+        text: "Area Calculada!",
+        icon: "success"
+      });
     }
   }
   if (tipo == 3) {

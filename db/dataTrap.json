@@ -1,0 +1,37 @@
+[
+    {
+        "id": 1, 
+        "base1": 10, 
+        "base2": 10, 
+        "altura": 10, 
+        "area": 100
+    },
+    {
+        "id": 2, 
+        "base1": 15, 
+        "base2": 15, 
+        "altura": 10, 
+        "area": 200
+    },
+    {
+        "id": 3, 
+        "base1": 20, 
+        "base2": 20, 
+        "altura": 10, 
+        "area": 400
+    },
+    {
+        "id": 4, 
+        "base1": 15, 
+        "base2": 15, 
+        "altura": 10, 
+        "area":500
+    },
+    {
+        "id": 5, 
+        "base1": 10, 
+        "base2": 15, 
+        "altura": 10, 
+        "area": 100
+    }
+]
