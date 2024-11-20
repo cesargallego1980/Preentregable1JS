@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Formulario de Cálculo de Área</title>
   <script defer src="../JS/main2.js"></script>
+  <script defer src="../JS/main.js"></script>
   <link rel="stylesheet" href="../CSS/estilos.css">
   <!-- Bootstrap CSS -->
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
+
 <body>
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Menú</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
@@ -47,12 +51,29 @@
       <!-- <button type="button" class="btn btn-primary" onclick="calcularAreaCuadrado()">Calcular Área</button> -->
       <!-- <button type="button" class="btn btn-primary" onclick="BuscarAreaCuadrado(1)">Buscar Área</button> -->
     </form>
-    <div id="resultado" class="mt-3"></div>
+    <!-- <div id="resultado" class="mt-3"></div>
     <div id="promCuadrado" class="mt-3"></div>
-    <div id="AreaCuadMaxima" class="mt-3"></div>
+    <div id="AreaCuadMaxima" class="mt-3"></div> -->
     <div id="tablaAreas">
-
     </div>
+
+    <div>
+      <table width='100%' id="init" border="1" style="display: none;width: 100%;">
+        <thead>
+          <tr>
+            <th style="width: 100%;">Lado</th>
+            <th style="width: 100%;">Area del cuadrado</th>
+          </tr>
+        </thead>
+
+        <tbody id="tablaAreaRow">
+
+        </tbody>
+
+      </table>
+    </div>
+
+
     <h2 class="text-center">Calcular Área de un Rectangulo</h2>
     <form id="areaForm" class="mt-4">
       <!-- <div class="form-group">
@@ -71,7 +92,24 @@
     <!-- <div id="promRectangulo" class="mt-3"></div>
     <div id="AreaRectMaxima" class="mt-3"></div> -->
     <div id="tablaAreasRectangulo">
+      
 
+    </div>
+    <div>
+      <table width='100%' id="init2" border="1" style="display: none;width: 100%;">
+        <thead>
+          <tr>
+            <th style="width: 100%;">Lado 1</th>
+            <th style="width: 100%;">Lado 2</th>
+            <th style="width: 100%;">Area del Rectangulo</th>
+          </tr>
+        </thead>
+
+        <tbody id="tablaAreaRow2">
+
+        </tbody>
+
+      </table>
     </div>
 
     <h2 class="text-center">Calcular Área de un Triangulo</h2>
@@ -104,7 +142,7 @@
       </div>
       <button type="button" class="btn btn-primary" onclick="mostrarRegistros(4)">Mostrar Registros</button>
       <!-- <button type="button" class="btn btn-primary" onclick="calcularAreaCirculo()">Calcular Área</button> -->
-      
+
     </form>
     <!-- <div id="resultadoCirc" class="mt-3"></div>
     <div id="promCirculo" class="mt-3"></div>
@@ -113,12 +151,12 @@
 
     <h2 class="text-center">Calcular Área de un Trapecio</h2>
     <form id="areaForm" class="mt-4">
-      
+
       <button type="button" class="btn btn-primary" onclick="mostrarRegistros(5)">Mostrar Registros</button>
-      
-      
+
+
     </form>
-    
+
     <div id="tablaAreasTrapecio" class="mt-3"></div>
 
   </div>
@@ -129,12 +167,11 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
   <!-- Script para calcular área -->
-  
 
-<style>
-   
-</style>
+
+  <style>
+
+  </style>
 </body>
+
 </html>
-
-
