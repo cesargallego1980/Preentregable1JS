@@ -15,14 +15,14 @@ function mostrarRegistros(tipo) {
           data.forEach(cuadrado => {
           
           setTimeout(() => {
-              //  console.log("Largada!!")
+            
               dataRow.innerHTML += `<tr><td><strong>${cuadrado.lado}</strong></td><td><strong>${cuadrado.area}</td></tr>`
             }, inittimer)
             inittimer+= 500;
           })
-          //console.log(tablaAreas)
+         
           tablaAreas += "</table>";
-         // document.getElementById("tablaAreas").innerHTML = tablaAreas;
+         
         })
   
     }
